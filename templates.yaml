@@ -12,3 +12,39 @@ templates:
     version: "1.0.0"
     tags: [qqq, java, starter]
     maintainer: QRun-IO
+    prompts:
+      - name: projectName
+        message: Project name
+        type: text
+        defaultValue: my-qqq-app
+      - name: groupId
+        message: Maven group ID
+        type: text
+        defaultValue: com.example
+      - name: artifactId
+        message: Maven artifact ID
+        type: text
+        defaultValue: my-qqq-app
+      - name: packageName
+        message: Java package name
+        type: text
+        defaultValue: com.example.myapp
+    postGen:
+      - name: Initialize git repository
+        command: git init
+        optional: true
+      - name: Build project
+        command: mvn clean compile -DskipTests
+        optional: true
+    ignore:
+      - .git
+      - .github
+      - .idea
+      - target
+      - "*.iml"
+      - LICENSE
+      - README.md
+      - CONTRIBUTING.md
+      - CODE_OF_CONDUCT.md
+      - SECURITY.md
+      - QUICK_START.md
