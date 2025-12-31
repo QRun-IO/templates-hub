@@ -1,0 +1,14 @@
+# QRun Templates Hub
+# This file lists all available project templates for qctl qqq init
+
+version: "1.0"
+registry: https://github.com/QRun-IO
+
+templates:
+  - id: new-qqq-application
+    name: QQQ Application Starter
+    description: Complete QQQ application with entities, database, and dashboard
+    repo: new-qqq-application-template
+    version: "1.0.0"
+    tags: [qqq, java, starter]
+    maintainer: QRun-IO
