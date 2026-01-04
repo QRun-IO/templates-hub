@@ -11,7 +11,7 @@ templates:
     description: Complete QQQ application with entities, database, and dashboard
     repo: new-qqq-application-template
     version: "1.0.0"
-    minimumQctlVersion: "0.2.0"
+    minimumQctlVersion: "0.0.1"
     tags: [qqq, java, starter]
     maintainer: QRun-IO
     prompts:
