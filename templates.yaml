@@ -6,10 +6,12 @@ registry: https://github.com/QRun-IO
 
 templates:
   - id: new-qqq-application
+    schemaVersion: 2
     name: QQQ Application Starter
     description: Complete QQQ application with entities, database, and dashboard
     repo: new-qqq-application-template
     version: "1.0.0"
+    minimumQctlVersion: "0.2.0"
     tags: [qqq, java, starter]
     maintainer: QRun-IO
     prompts:
@@ -17,25 +19,37 @@ templates:
         message: Project name
         type: text
         defaultValue: my-qqq-app
+        required: true
       - name: groupId
         message: Maven group ID
         type: text
         defaultValue: com.example
+        required: true
       - name: artifactId
         message: Maven artifact ID
         type: text
         defaultValue: my-qqq-app
+        required: true
       - name: packageName
         message: Java package name
         type: text
         defaultValue: com.example.myapp
+        required: true
+    computed:
+      - name: packagePath
+        expression: "$str.replace($packageName, '.', '/')"
+    transforms:
+      - type: delete
+        pattern: "**/.gitkeep"
     postGen:
       - name: Initialize git repository
         command: git init
         optional: true
+        phase: init
       - name: Build project
         command: mvn clean compile -DskipTests
         optional: true
+        phase: build
     ignore:
       - .git
       - .github
@@ -48,3 +62,4 @@ templates:
       - CODE_OF_CONDUCT.md
       - SECURITY.md
       - QUICK_START.md
+      - scripts
